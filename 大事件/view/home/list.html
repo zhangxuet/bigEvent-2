@@ -139,6 +139,7 @@
 
     <script src="./assets/template-web.js"></script>
 
+    <!-- 顶部导航栏 -->
     <script id="nav" type="text/html">
         {{each arr}}
         <li><a href="./list.html?id={{$value.id}}">{{$value.name}}</a></li>
@@ -149,9 +150,10 @@
             var str = template('nav',{arr: res})
             $('.level_two').append(str);
             $('.left_menu').append(str);
-        })
+        },'json')
     </script>
 
+    <!-- 一周热门排行 -->
     <script id="hot" type="text/html">
         {{each arr}}
         <li>
@@ -172,9 +174,10 @@
         $.get('/getArticles',{flag: 'click',num: 7},function (res) {
             var str = template('hot',{arr: res.data});
             $('.content_list').eq(0).append(str);
-        })
+        },'json')
     </script>
 
+    <!-- 焦点关注 -->
     <script id="about" type="text/html">
         {{each arr}}
         <li><a href="./detail.html?id={{$value.id}}">{{$value.title}}</a></li>
@@ -184,9 +187,10 @@
         $.get('./getArticles',{flag: 'bad',num: 7},function(res) {
             var str = template('about',{arr: res.data});
             $('.content_list').eq(2).append(str);
-        })
+        },'json')
     </script>
 
+    <!-- 分类列表的内容 -->
     <script id="content" type="text/html">
         <div class="list_title">
             <h3>{{arr[0].catename}}</h3>
@@ -206,11 +210,12 @@
         {{/each}}
     </script>
     <script>
-        var id = location.search.replace(/\D/g,'');
+        var id = location.search.replace(/\D/g,'');//2
         var data = {
             cateid: id,
             page: 1,
         }
+        // 开关控制事件委托只能执行一次
         var flag = true;
         function loadData () {
              $.get('/getArticlesWithPage',data,function (res) {
@@ -227,6 +232,7 @@
         loadData ();
     </script>
 
+    <!-- 分页 -->
     <script type="text/javascript">
             function page(pageTotal) {
                 window.pagObj = $('#pagination').twbsPagination({

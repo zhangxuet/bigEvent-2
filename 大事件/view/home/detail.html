@@ -181,6 +181,7 @@
     <script src="./assets/js/jquery-1.12.4.min.js"></script>
     <script src="./assets/template-web.js"></script>
 
+    <!-- 一周热门排行 -->
     <script id="hot" type="text/html">
         {{each arr}}
         <li>
@@ -204,6 +205,7 @@
         })
     </script>
 
+    <!-- 焦点关注 -->
     <script id="about" type="text/html">
         {{each arr}}
         <li><a href="./detail.html?id={{$value.id}}">{{$value.title}}</a></li>
@@ -216,6 +218,7 @@
         })
     </script>
 
+    <!-- 详细内容 -->
     <script id="content" type="text/html">
         <h3 class="article_title">{{arr.title}}</h3>
         <div class="article_info">杰克 发布于 {{arr.addtime}}&nbsp;&nbsp;&nbsp;
@@ -234,6 +237,7 @@
         })
     </script>
 
+    <!-- 上一篇下一篇 -->
     <script id="other" type="text/html">
     上一篇： <a href="./detail.html?id={{arr.prev.id}}">{{arr.prev.title}}</a><a><br/>
     下一篇： <a href="./detail.html?id={{arr.next.id}}">{{arr.next.title}}</a><br>

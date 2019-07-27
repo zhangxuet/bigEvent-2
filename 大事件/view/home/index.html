@@ -139,6 +139,7 @@
 
     <script src="./assets/js/jquery-1.12.4.min.js"></script>
     <script src="./assets/template-web.js"></script>
+    <!-- 顶部导航栏 -->
     <script id="nav" type="text/html">
         {{each arr}}
         <li><a href="./list.html?id={{$value.id}}">{{$value.name}}</a></li>
@@ -149,9 +150,10 @@
             var str = template('nav',{arr: res})
             $('.level_two').append(str);
             $('.left_menu').append(str);
-        })
+        },'json')
     </script>
 
+    <!-- 焦点图 -->
     <script id="focus" type="text/html">
         {{each arr}}
             {{if $index==0}}
@@ -168,9 +170,10 @@
         $.get('/getArticles',{flag: 'good'},function(res) {
             var str = template('focus',{arr: res.data});
             $('.focus_list').append(str);
-        })
+        },'json')
     </script>
 
+    <!-- 最新发布 -->
     <script id="latest" type="text/html">
         {{each arr}}
             <div class="common_news_list">
@@ -190,9 +193,10 @@
             console.log(res)
             var str = template('latest',{arr: res.data});
             $('.left_con').append(str);
-        })
+        },'json')
     </script>
 
+    <!-- 一周热门排行 -->
     <script id="hot" type="text/html">
         {{each arr}}
         <li>
@@ -213,9 +217,10 @@
         $.get('/getArticles',{flag: 'click',num: 7},function (res) {
             var str = template('hot',{arr: res.data});
             $('.content_list').eq(0).append(str);
-        })
+        },'json')
     </script>
 
+    <!-- 焦点关注 -->
     <script id="about" type="text/html">
         {{each arr}}
         <li><a href="./detail.html?id={{$value.id}}">{{$value.title}}</a></li>
