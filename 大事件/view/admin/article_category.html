@@ -85,7 +85,7 @@
           $('#model_add').click(function(){
             // alert('add');
             // 新增
-            if ($(this).text(新增)) {
+            if ($(this).text('新增')) {
                 var data = $('#addForm').serialize();//获取表单所有字符串格式的内容
                 // console.log(data)
                 $.post('/admin/addCategory',data,function(res) {
@@ -95,7 +95,7 @@
                         location.reload();
                     }
                 },'json')
-            }else if ($(this).text(修改)) {
+            }else if ($(this).text('修改')) {
                 // 修改
                 var data = $('#addForm').serialize();
                 console.log(data)
